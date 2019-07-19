@@ -64,9 +64,8 @@ public class Robot extends IterativeRobot {
 		// instantiate your motors here
 		// i.e. driveFL = new Spark(myMap.getTunerID("driveFL"));
 		
-		// default -> differential drive
 		myDrive = new DriveTrain();
-		// instantiate your drive train above
+		// customize your drivetrain here
 	}
 	
 	/**
