@@ -10,7 +10,6 @@ import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.concurrent.TimeUnit;
-import java.util.
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,16 +30,21 @@ public class Robot extends IterativeRobot {
 	 * this is your robot map
 	 * view RobotMap.java for details, methods, and constructors
 	 */
-	private RobotMap map;
+	private RobotMap myMap;
 	
-	/** declare your motors here
+	/**
+	 * declare your motors here
 	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless, Servo
 	 * CTRE: WPI_VictorSPX, TalonSRX
 	 *
 	 * i.e. private Spark driveFL;
 	 */
 	
-	/*
+	/**
+	 * this is your drivetrain
+	 * view DriveTrain.java for details, methods, and constructors
+	 */
+	private DriveTrain myDrive;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -53,14 +57,16 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		map = new RobotMap();
+		myMap = new RobotMap();
 		// add your speed controllers here
-		// i.e. map.addSpeedController("driveFL", 10);
+		// i.e. myMap.addSpeedController("driveFL", 10);
 		
 		// instantiate your motors here
-		// i.e. driveFL = new Spark(map.getTunerID("driveFL"));
+		// i.e. driveFL = new Spark(myMap.getTunerID("driveFL"));
 		
-		// create your drivetrain here
+		// default -> differential drive
+		myDrive = new DriveTrain();
+		// instantiate your drive train above
 	}
 	
 	/**
