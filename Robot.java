@@ -5,7 +5,8 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.*;
+import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.concurrent.TimeUnit;
@@ -32,8 +33,14 @@ public class Robot extends IterativeRobot {
 	 */
 	private RobotMap map;
 	
-	// your motors, look at Motor class for more details
-	private Motor[] myMotors;
+	/** declare your motors here
+	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless, Servo
+	 * CTRE: WPI_VictorSPX, TalonSRX
+	 *
+	 * i.e. private Spark driveFL;
+	 */
+	
+	/*
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -41,19 +48,19 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-
 		// send auto chooser to the radio/management
 		chooser.addDefault("Do Nothing", DEFAULT_AUTO);
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		// add your motors
-		// i.e. myMotors.addMotor("WPI_VictorSPX", "driveFL", true);
-		
 		map = new RobotMap();
 		// add your speed controllers here
-		// i.e. map.addSpeedController(myMotors[0].getName(), 10);
-    
+		// i.e. map.addSpeedController("driveFL", 10);
+		
+		// instantiate your motors here
+		// i.e. driveFL = new Spark(map.getTunerID("driveFL"));
+		
+		// create your drivetrain here
 	}
 	
 	/**
