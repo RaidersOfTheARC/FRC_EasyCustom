@@ -41,6 +41,10 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Do Nothing", DEFAULT_AUTO);
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
+		
+		map = new RobotMap();
+		// add your speed controllers here
+		// i.e. map.addSpeedController("driveFL", 10);
     
 	}
 	
