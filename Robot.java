@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto Choices", chooser);
 		
 		// add your motors
-		// i.e. myMotors.addMotor("PWMVictorSPX", "driveFL");
+		// i.e. myMotors.addMotor("WPI_VictorSPX", "driveFL", true);
 		
 		map = new RobotMap();
 		// add your speed controllers here
