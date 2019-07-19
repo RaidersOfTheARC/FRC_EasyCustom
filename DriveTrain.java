@@ -23,7 +23,7 @@ public class DriveTrain {
   
   public void addSC(SpeedController ctrl) { list.add(ctrl); }
   
-  public SpeedController getSC(int index) { list.get(index); }
+  public SpeedController getSC(int index) { return list.get(index); }
   
   public void addSC(SpeedController ctrl, int index) { list.add(index, ctrl); }
   
@@ -45,5 +45,7 @@ public class DriveTrain {
         drive = new DifferentialDrive(list.get(0), list.get(1));
     }
   }
+  
+  public RobotDriveBase getDrive() { return drive; }
   
 }
