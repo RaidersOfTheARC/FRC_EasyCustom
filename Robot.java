@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------*/
-/* 2019 TEAR-A-BYTE #6905                                                     */
-/* Code by: Jackson Isenberg, Sahan Reddy, Shreya Das                         */
+/* THIS IS CODE IS FOR THE WEAK-MINDED                                        */
+/* There are a wide variety of subsystems and customizable options            */
 /*----------------------------------------------------------------------------*/
 
 package frc.robot;
