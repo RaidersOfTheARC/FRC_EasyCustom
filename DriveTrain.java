@@ -6,12 +6,42 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.drive.*;
+import edu.wpi.first.wpilibj.*;
+import java.util.ArrayList;
 
 public class DriveTrain {
   
-  // default -> differential drive : two speed controller groups
+  private RobotDriveBase drive;
+  private ArrayList<SpeedController> list;
+  
   public DriveTrain() {
-    
+    list = new ArrayList<SpeedController>();
+  }
+  
+  // create your motor list
+  // they must be in the proper order!
+  
+  public void addSpeedController(SpeedController ctrl) { list.add(ctrl); }
+  
+  public SpeedController getSpeedController(int index) { list.get(index); }
+  
+  public void addSpeedController(SpeedController ctrl, int index) { list.add(index, ctrl); }
+  
+  // create your custom drive
+  public void createDrive(int type) {
+    switch (type) {
+      case 0:
+        // KilloughDrive(left, right, back);
+        drive = new KilloughDrive(list.get(0), list.get(1), list.get(2));
+        break;
+      case 1:
+        // MecanumDrive(fL, bL, fR, bR);
+        drive = new MecanumDrive(list.get(0), list.get(1), list.get(2), list.get(3));
+        break;
+      default:
+        // DifferentialDrive(left, right);
+        drive = new DifferentialDrive(list.get(0), list.get(1));
+    }
   }
   
 }
