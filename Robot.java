@@ -26,6 +26,8 @@ public class Robot extends IterativeRobot {
 	private static final long AUTO_DURATION = 7000;
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
+	// declare any objects needed here, such as joysticks or controllers
+	
 	/**
 	 * this is your robot map
 	 * view RobotMap.java for details, methods, and constructors
