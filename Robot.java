@@ -5,9 +5,11 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.util.concurrent.TimeUnit;
+import java.util.
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,6 +32,9 @@ public class Robot extends IterativeRobot {
 	 */
 	private RobotMap map;
 	
+	// your motors, look at Motor class for more details
+	private Motor[] myMotors;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -42,9 +47,12 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
+		// add your motors
+		// i.e. myMotors.addMotor("PWMVictorSPX", "driveFL");
+		
 		map = new RobotMap();
 		// add your speed controllers here
-		// i.e. map.addSpeedController("driveFL", 10);
+		// i.e. map.addSpeedController(myMotors[0].getName(), 10);
     
 	}
 	
