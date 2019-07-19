@@ -61,7 +61,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-    
 		// if chooser -> default
 		if (chooser.equals(DEFAULT_AUTO)) {
 			Timer.delay(AUTO_DURATION);
@@ -70,14 +69,11 @@ public class Robot extends IterativeRobot {
 		else if (chooser.equals(CUSTOM_AUTO)) {
 			autonomousPeriodic();
 		}
-    
 	}
 	
 	@Override
 	public void autonomousPeriodic() {
-    
-    // insert autonomous code here
-    
+    		// insert autonomous code here
 	}
 
 	
@@ -86,8 +82,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-    
 		// insert teleop code here
-    
 	}
 }
