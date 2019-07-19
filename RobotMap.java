@@ -21,4 +21,6 @@ public class RobotMap {
   
   public void getTunerID(String key) { map.get(key); }
   
+  public void changeID(String key, int id) { map.replace(key, id); }
+  
 }
