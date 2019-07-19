@@ -14,21 +14,11 @@ public class RobotMap {
   
   // Constructor
   public RobotMap() {
-    
     map = new HashMap<String, Integer>();
-    
   }
   
-  public void addSpeedController(String name, int id) {
-    
-    map.put(name, id);
-    
-  }
+  public void addSpeedController(String name, int id) { map.put(name, id); }
   
-  public void getTunerID(String key) {
-  
-    map.get(key);
-  
-  }
+  public void getTunerID(String key) { map.get(key); }
   
 }
