@@ -21,11 +21,13 @@ public class DriveTrain {
   // create your motor list
   // they must be in the proper order!
   
-  public void addSpeedController(SpeedController ctrl) { list.add(ctrl); }
+  public void addSC(SpeedController ctrl) { list.add(ctrl); }
   
-  public SpeedController getSpeedController(int index) { list.get(index); }
+  public SpeedController getSC(int index) { list.get(index); }
   
-  public void addSpeedController(SpeedController ctrl, int index) { list.add(index, ctrl); }
+  public void addSC(SpeedController ctrl, int index) { list.add(index, ctrl); }
+  
+  public void clearList() { list.clear(); }
   
   // create your custom drive
   public void createDrive(int type) {
