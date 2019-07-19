@@ -25,6 +25,12 @@ public class Robot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	/**
+	 * this is your robot map
+	 * view RobotMap.java for details, methods, and constructors
+	 */
+	private RobotMap map;
+	
+	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
