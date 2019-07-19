@@ -40,6 +40,8 @@ public class Robot extends IterativeRobot {
 	 * i.e. private Spark driveFL;
 	 */
 	
+	// if you need any speed controller groups, declare them here
+	
 	/**
 	 * this is your drivetrain
 	 * view DriveTrain.java for details, methods, and constructors
@@ -66,6 +68,13 @@ public class Robot extends IterativeRobot {
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
+		/**
+		 * sample below for a DifferentialDrive:
+		 *
+		 * myDrive.addSC(left);
+		 * myDrive.addSC(right);
+		 * myDrive.createDrive(2);
+		 */
 	}
 	
 	/**
