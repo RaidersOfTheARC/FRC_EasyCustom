@@ -13,7 +13,7 @@ public class TwoMotorConveyor implements Conveyor extends Subsystem {
   private double power;
   
   // please input the motor used, its orientation, and the requested power output
-  public OneMotorConveyor(SpeedController left, SpeedController right, double speed) {
+  public TwoMotorConveyor(SpeedController left, SpeedController right, double speed) {
     this.left = left;
     this.right = right;
     power = speed;
