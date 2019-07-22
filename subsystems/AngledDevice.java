@@ -9,6 +9,6 @@ public interface AngledDevice {
   public void reset();
   
   // get current position
-  public void getPositon();
+  public double getPositon();
 
 }
