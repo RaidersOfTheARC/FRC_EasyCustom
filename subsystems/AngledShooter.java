@@ -12,20 +12,4 @@ public abstract class AngledShooter implements AngledDevice, Shooter {
     this.shooters = shooters;
   }
   
-  public Servo getAngleServo(int index) {
-    return angleManips[index];
-  }
-  
-  public SpeedController getShooterMotor(int index) {
-    return shooters[index];
-  }
-  
-  public Servo[] getServos() {
-    return angleManips;
-  }
-  
-  public SpeedController[] getShooters() {
-    return shooters;
-  }
-  
 }
