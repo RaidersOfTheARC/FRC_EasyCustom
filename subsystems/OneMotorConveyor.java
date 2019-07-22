@@ -5,7 +5,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
-import frc.robot.*;
+import edu.wpi.first.wpilibj.command.*;
 
 public class OneMotorConveyor implements Conveyor {
   
