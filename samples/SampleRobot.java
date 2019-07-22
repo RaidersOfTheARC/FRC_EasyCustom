@@ -31,7 +31,10 @@ public class SampleRobot extends IterativeRobot {
 	private OneMotorElevator elev;
 	private TwoMotorConveyor intake;
 	private OneMotorConveyor lift;
+	private CylinderTrigger outtake;
+	
 	private Compressor cpress;
+	private Solenoid outtakeLeft, outtakeRight;
 	
 	/**
 	 * declare your motors here
@@ -77,10 +80,13 @@ public class SampleRobot extends IterativeRobot {
 		conveyorLift = new Spark(SampleRobotMap.map.get("conveyorLift"));
 		intakeLeft = new Spark(SampleRobotMap.map.get("intakeLeft"));
 		intakeRight = new Spark(SampleRobotMap.map.get("intakeRight"));
+		outtakeLeft = new Solenoid(SampleRobotMap.map.get("outtakeLeft"));
+		outtakeRight = new Solenoid(SampleRobotMap.map.get("outtakeRight"));
 		
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		intake = new TwoMotorConveyor(intakeLeft, intakeRight, 1.0);
 		lift = new OneMotorConveyor(conveyorLift, "right", 0.35);
+		outtake = new CylinderTrigger(new Solenoid[]{outtakeLeft, outtakeRight});
 		
 		cpress = new Compressor(SampleRobotMap.map.get("cpress"));
 		cpress.setClosedLoopControl(true);
@@ -152,5 +158,9 @@ public class SampleRobot extends IterativeRobot {
 		
 		// the lift and intake act in conjunction
 		lift.runConveyor(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		
+		// the outtake activates when the right bumper is held
+		outtake.push(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kRight));
+		// the outtake retracts when the right bumper is released
 	}
 }
