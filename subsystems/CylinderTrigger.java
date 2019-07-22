@@ -1,5 +1,5 @@
 /**
- * A push trigger that uses one cylinder
+ * A push trigger that uses cylinders
  */
 
 package frc.robot.subsystems;
@@ -7,23 +7,29 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 
-public class OneCylinderTrigger implements PushTrigger extends Subsystem {
+public class CylinderTrigger implements PushTrigger extends Subsystem {
   
-  private Solenoid trigger
+  private Solenoid[] cylinders;
   
-  public OneMotorConveyor(Solenoid trigger) {
-    this.trigger = trigger;
+  public OneMotorConveyor(Solenoid[] triggers) {
+    cylinders = triggers;
   }
     
   public void push(boolean act) {
     if (act) {
-      trigger.set(true);
+      for (Solenoid sol : cylinders) {
+	      sol.set(true);
+      }
     } else {
       retract();
     }
   }
   
-  public void stopConveyor() { trigger.set(false); }
+  public void stopConveyor() {
+	  for (Solenoid sol : cylinders) {
+		  sol.set(false);
+	  }
+  }
   
   @Override
   	public void initDefaultCommand() {
