@@ -12,7 +12,7 @@ public class Turret extends AngledShooter {
   private float power;
 
   // your servo states are specified using 0 and 1
-  // 0 = servo rotates counterclockwise, 1 = servo rotates clockwise
+  // 0 = servo rotates clockwise, 1 = servo rotates counterclockwise
   public Turret(Servo[] anglers, SpeedController[] shooters,
                 double[] defaults, float power, int[] servoStates) {
     super(anglers, shooters, servoStates);
