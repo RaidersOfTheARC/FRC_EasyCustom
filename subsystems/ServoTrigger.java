@@ -24,21 +24,21 @@ public class ServoTrigger implements PushTrigger extends Subsystem {
   public void push(boolean act) {
     if (act) {
       for (Servo x : servos) {
-	      for (double pos : positions) {
-          x.set(pos);
-        }
+	  for (double pos : positions) {
+          	x.set(pos);
+          }
       }
     } else {
       retract();
     }
   }
   
-  public void stopConveyor() {
-	  for (Servo x : servos) {
-      for (double def : defaults) {
-        x.set(def);
-      }
-    }
+  public void retract() {
+	for (Servo x : servos) {
+      		for (double def : defaults) {
+        		x.set(def);
+      		}
+    	}
   }
   
   @Override
