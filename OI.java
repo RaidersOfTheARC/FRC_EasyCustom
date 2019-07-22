@@ -21,6 +21,6 @@ public class OI {
     controls = ctrls;
   }
   
-  public GenericHID getUI(int index) { return controls[index]; }
+  public GenericHID get(int index) { return controls[index]; }
   
 }
