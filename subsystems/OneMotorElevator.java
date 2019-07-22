@@ -6,26 +6,47 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.qpi.first.wpilibj.*;
-import frc.robot.devices.Motor;
 
 public class OneMotorElevator implements Elevator extends Subsystem {
+	
+	private String motorLoc;
+	private SpeedController motor;
+	private double power;
   
-  private String motorLoc;
+  	// specify whether the motor is facing left or right on the robot
+  	// with regards to its natural orientation
+  	public OneMotorElevator(SpeedController motor, String motorOrientation, double speed) {
+	  	motorLoc = motorOrientation;
+		this.motor = motor;
+		power = speed;
+  	}
   
-  // specify whether the motor is facing left or right on the robot
-  // with regards to its natural orientation
-  public OneMotorElevator(Motor mymotor, String motorOrientation) {
-    motorLoc = motorOrientation;
-  }
+  	public void elevatorUp() {
+	  	if (motorLoc.toLowerCase().equals("left")) {
+			motor.set(power);
+		} else if (motorLoc.toLowerCase().equals("right")) {
+			motor.set(-power);
+		} else {
+			motor.set(0);
+		}
+  	}
+	
+	public void elevatorDown() {
+		if (motorLoc.toLowerCase().equals("left")) {
+			motor.set(-power);
+		} else if (motorLoc.toLowerCase().equals("right")) {
+			motor.set(power);
+		} else {
+			motor.set(0);
+		}
+	}
+	
+	public void elevatorStop() { motor.set(0); }
   
-  public void elevatorUp() {
-    
-  }
-  
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-  }
+  	@Override
+  	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+	  	// setDefaultCommand(new MySpecialCommand());
+  	}
   
 }
