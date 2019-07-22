@@ -26,8 +26,8 @@ public class Robot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	// declare any objects needed here, such as joysticks or controllers
-  private Joystick leftStick, rightStick;
-  private XboxController toolOp;
+  	private Joystick leftStick, rightStick;
+  	private XboxController toolOp;
 	
 	/**
 	 * declare your motors here
@@ -36,8 +36,8 @@ public class Robot extends IterativeRobot {
 	 *
 	 * i.e. private Spark driveFL;
 	 */
-  private Talon driveLeft, driveRight;
-  private NidecBrushless elevatorMotor;
+  	private Talon driveLeft, driveRight;
+  	private NidecBrushless elevatorMotor;
 	
 	// if you need any speed controller groups, declare them here
 	
@@ -58,12 +58,14 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
+		// create the robot map
 		MyRobotMap.createMap();
 		
 		// instantiate your devices here
-		// i.e. driveFL = new Spark(myMap.get("driveFL"));
-    driveLeft = new Talon(MyRobotMap.map.get("driveLeft"));
-    driveLeft = new Talon(MyRobotMap.map.get("driveRight"));
+		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
+    		driveLeft = new Talon(MyRobotMap.map.get("driveLeft"));
+    		driveLeft = new Talon(MyRobotMap.map.get("driveRight"));
+		elevatorMotor = new NidecBrushless(MyRobotMap.map.get("elevatorMotor"));
 		leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
 		rightStick = new Joystick(MyRobotMap.map.get("rightStick"));
 		toolOp = new XboxController(MyRobotMap.map.get("toolOp"));
@@ -77,9 +79,9 @@ public class Robot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
-    myDrive.addSC(driveLeft);
-    myDrive.addSC(driveRight);
-    myDrive.createDrive(2);
+    		myDrive.addSC(driveLeft);
+    		myDrive.addSC(driveRight);
+    		myDrive.createDrive(2);
     
 	}
 	
@@ -118,5 +120,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// insert teleop code here
+		myDrive.tankDrive(leftStick.getY(), rightStick.getY());
 	}
 }
