@@ -14,7 +14,7 @@ public class SampleRobotMap {
 		map.addDevice("leftStick", 0);
 		map.addDevice("rightStick", 1);
 		map.addDevice("toolOp", 2);
-	  	map.addDevice("elevatorMotor", 4);
+	  	map.addDevice("elevatorMotor", 1);
 		map.addDevice("intakeLeft", 7);
 		map.addDevice("intakeRight", 3);
 		map.addDevice("conveyorLift", 8);
