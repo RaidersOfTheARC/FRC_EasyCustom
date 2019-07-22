@@ -7,5 +7,8 @@ public interface AngledDevice {
   
   // reset to default positon
   public void reset();
+  
+  // get current position
+  public void getPositon();
 
 }
