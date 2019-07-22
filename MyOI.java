@@ -20,6 +20,7 @@ public class MyOI {
     
     // create your OI
     // i.e. oi = new OI(GenericHID[]{joystick, gamepad});
+    oi = new OI();
   }
 
 }
