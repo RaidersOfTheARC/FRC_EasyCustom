@@ -3,7 +3,7 @@
 /* By: Jackson Isenberg                                                       */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.samples;
 
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.can.*;
@@ -58,16 +58,16 @@ public class SampleRobot extends IterativeRobot {
 		SmartDashboard.putData("Auto Choices", chooser);
 		
 		// create the robot map
-		MyRobotMap.createMap();
+		SampleRobotMap.createMap();
 		
 		// create the OI
-		MyOI.createOI();
+		SampleOI.createOI();
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
-    		driveLeft = new Talon(MyRobotMap.map.get("driveLeft"));
-    		driveLeft = new Talon(MyRobotMap.map.get("driveRight"));
-		elevatorMotor = new NidecBrushless(MyRobotMap.map.get("elevatorMotor"));
+    		driveLeft = new Talon(SampleRobotMap.map.get("driveLeft"));
+    		driveLeft = new Talon(SampleRobotMap.map.get("driveRight"));
+		elevatorMotor = new NidecBrushless(SampleRobotMap.map.get("elevatorMotor"));
 		
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		
@@ -121,16 +121,16 @@ public class SampleRobot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// insert teleop code here
-		myDrive.getDrive().tankDrive(MyOI.oi.get(0).getY(), MyOI.oi.get(1).getY());
+		myDrive.getDrive().tankDrive(SampleOI.oi.get(0).getY(), SampleOI.oi.get(1).getY());
 		
 		// elevator up when 'A' is pressed
-		elevatorUp(MyOI.oi.get(2).getAButtonPressed());
+		elevatorUp(SampleOI.oi.get(2).getAButtonPressed());
 		
 		// elevator down when 'B' is pressed
-		elevatorDown(MyOI.oi.get(2).getBButtonPressed());
+		elevatorDown(SampleOI.oi.get(2).getBButtonPressed());
 		
 		// stop elevator when 'X' is pressed
-		if (MyOI.oi.get(2).getXButtonPressed()) {
+		if (SampleOI.oi.get(2).getXButtonPressed()) {
 			elevatorStop();
 		}
 	}
