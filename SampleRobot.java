@@ -77,6 +77,9 @@ public class Robot extends IterativeRobot {
 		// i.e. driveFL = new Spark(myMap.get("driveFL"));
     driveLeft = new Talon(myMap.get("driveLeft"));
     driveLeft = new Talon(myMap.get("driveRight"));
+		leftStick = new Joystick(myMap.get("leftStick"));
+		rightStick = new Joystick(myMap.get("rightStick"));
+		toolOp = new XboxController(myMap.get("toolOp"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
