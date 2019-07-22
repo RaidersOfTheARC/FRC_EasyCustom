@@ -3,6 +3,21 @@
 /* By: Jackson Isenberg                                                       */
 /*----------------------------------------------------------------------------*/
 
+/**
+ * Subsytems used:
+ * - One Motor Elevator
+ * - Two Motor Conveyor
+ * - Cylinder Trigger
+ */
+
+/**
+ * Robot functions:
+ * - Pick up field elements using intake
+ * - Cycle elements through internal lift mechanism
+ * - Set elevator height so that elements land in holding mechanism at specified height
+ * - Eject elements using outtake pistons
+ */
+
 package frc.robot.samples;
 
 import edu.wpi.first.wpilibj.*;
