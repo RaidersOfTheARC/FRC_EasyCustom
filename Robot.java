@@ -29,11 +29,6 @@ public class Robot extends IterativeRobot {
 	// declare any objects needed here, such as joysticks or controllers
 	
 	/**
-	 * this is your robot map
-	 * view RobotMap.java for details, methods, and constructors
-	 */
-	
-	/**
 	 * declare your motors here
 	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless
 	 * CTRE: WPI_VictorSPX, TalonSRX
@@ -59,6 +54,14 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Do Nothing", DEFAULT_AUTO);
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
+		
+		/**
+	 	 * this is your robot map
+		 * view RobotMap.java for details, methods, and constructors
+		 * view MyRobotMap.java to create your map
+		 */
+		
+		MyRobotMap.createMap();
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
