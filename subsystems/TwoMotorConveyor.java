@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 
-public class OneMotorConveyor implements Conveyor extends Subsystem {
+public class TwoMotorConveyor implements Conveyor extends Subsystem {
   
   private SpeedController left, right;
   private double power;
