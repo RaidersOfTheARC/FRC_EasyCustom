@@ -31,6 +31,7 @@ public class SampleRobot extends IterativeRobot {
 	private OneMotorElevator elev;
 	private TwoMotorConveyor intake;
 	private OneMotorConveyor lift;
+	private Compressor cpress;
 	
 	/**
 	 * declare your motors here
@@ -80,6 +81,9 @@ public class SampleRobot extends IterativeRobot {
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		intake = new TwoMotorConveyor(intakeLeft, intakeRight, 1.0);
 		lift = new OneMotorConveyor(conveyorLift, "right", 0.35);
+		
+		cpress = new Compressor(SampleRobotMap.map.get("cpress"));
+		cpress.setClosedLoopControl(true);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
