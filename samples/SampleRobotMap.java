@@ -18,7 +18,9 @@ public class SampleRobotMap {
 		map.addDevice("intakeLeft", 7);
 		map.addDevice("intakeRight", 3);
 		map.addDevice("conveyorLift", 8);
-
+		map.addDevice("outtakeLeft", 1);
+		map.addDevice("outtakeRight", 2);
+		map.addDevice("cpress", 1);
 
     	}
   
