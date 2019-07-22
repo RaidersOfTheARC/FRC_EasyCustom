@@ -7,7 +7,7 @@ package frc.robot.samples.tank;
 import edu.wpi.first.wpilibj.*;
 import frc.robot.*;
 
-public class SampleOI {
+public class TankOI {
 
   // declare your HIDs here
   // i.e. Joystick leftStick;
