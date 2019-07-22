@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* My sample robot is a tank drive                                            */
+/* This sample robot is a tank drive                                          */
 /* By: Jackson Isenberg                                                       */
 /*----------------------------------------------------------------------------*/
 
@@ -82,28 +82,28 @@ public class TankBot extends IterativeRobot {
 		SmartDashboard.putData("Auto Choices", chooser);
 		
 		// create the robot map
-		SampleRobotMap.createMap();
+		TankBotMap.createMap();
 		
 		// create the OI
-		SampleOI.createOI();
+		TankOI.createOI();
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
-    		driveLeft = new Talon(SampleRobotMap.map.get("driveLeft"));
-    		driveLeft = new Talon(SampleRobotMap.map.get("driveRight"));
-		elevatorMotor = new NidecBrushless(SampleRobotMap.map.get("elevatorPWM"), SampleRobotMap.map.get("elevatorDIO"));
-		conveyorLift = new Spark(SampleRobotMap.map.get("conveyorLift"));
-		intakeLeft = new Spark(SampleRobotMap.map.get("intakeLeft"));
-		intakeRight = new Spark(SampleRobotMap.map.get("intakeRight"));
-		outtakeLeft = new Solenoid(SampleRobotMap.map.get("outtakeLeft"));
-		outtakeRight = new Solenoid(SampleRobotMap.map.get("outtakeRight"));
+    		driveLeft = new Talon(TankBotMap.map.get("driveLeft"));
+    		driveLeft = new Talon(TankBotMap.map.get("driveRight"));
+		elevatorMotor = new NidecBrushless(TankBotMap.map.get("elevatorPWM"), TankBotMap.map.get("elevatorDIO"));
+		conveyorLift = new Spark(TankBotMap.map.get("conveyorLift"));
+		intakeLeft = new Spark(TankBotMap.map.get("intakeLeft"));
+		intakeRight = new Spark(TankBotMap.map.get("intakeRight"));
+		outtakeLeft = new Solenoid(TankBotMap.map.get("outtakeLeft"));
+		outtakeRight = new Solenoid(TankBotMap.map.get("outtakeRight"));
 		
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		intake = new TwoMotorConveyor(intakeLeft, intakeRight, 1.0);
 		lift = new OneMotorConveyor(conveyorLift, "right", 0.35);
 		outtake = new CylinderTrigger(new Solenoid[]{outtakeLeft, outtakeRight});
 		
-		cpress = new Compressor(SampleRobotMap.map.get("cpress"));
+		cpress = new Compressor(TankBotMap.map.get("cpress"));
 		cpress.setClosedLoopControl(true);
 		
 		myDrive = new DriveTrain();
@@ -155,27 +155,27 @@ public class TankBot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		myDrive.getDrive().tankDrive(SampleOI.oi.get(0).getY(), SampleOI.oi.get(1).getY());
+		myDrive.getDrive().tankDrive(TankOI.oi.get(0).getY(), TankOI.oi.get(1).getY());
 		
 		// elevator up when 'A' is pressed
-		elev.elevatorUp(SampleOI.oi.get(2).getAButtonPressed());
+		elev.elevatorUp(TankOI.oi.get(2).getAButtonPressed());
 		
 		// elevator down when 'B' is pressed
-		elev.elevatorDown(SampleOI.oi.get(2).getBButtonPressed());
+		elev.elevatorDown(TankOI.oi.get(2).getBButtonPressed());
 		
 		// stop elevator when 'X' is pressed
-		if (SampleOI.oi.get(2).getXButtonPressed()) {
+		if (TankOI.oi.get(2).getXButtonPressed()) {
 			elev.elevatorStop();
 		}
 		
 		// the intake activates when the left bumper is held
-		intake.runConveyor(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		intake.runConveyor(TankOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
 		
 		// the lift and intake act in conjunction
-		lift.runConveyor(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		lift.runConveyor(TankOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
 		
 		// the outtake activates when the right bumper is held
-		outtake.push(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kRight));
+		outtake.push(TankOI.oi.get(2).getBumper(GenericHID.Hand.kRight));
 		// the outtake retracts when the right bumper is released
 	}
 }
