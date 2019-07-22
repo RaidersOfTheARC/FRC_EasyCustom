@@ -1,3 +1,5 @@
+package frc.robot.subsystems;
+
 public interface Elevator {
 
   // the elevator goes up
