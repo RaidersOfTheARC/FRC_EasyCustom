@@ -39,6 +39,7 @@ public class ArcadeBot extends IterativeRobot {
   	private Victor driveFL, driveFR, driveBL, driveBR;
 	
 	// if you need any speed controller groups, declare them here
+	private SpeedControllerGroup groupLeft, groupRight;
 	
 	/**
 	 * this is your drivetrain
@@ -70,6 +71,9 @@ public class ArcadeBot extends IterativeRobot {
 		driveBL = new Victor(ArcadeBotMap.map.get("driveBL"));
 		driveBR = new Victor(ArcadeBotMap.map.get("driveBR"));
 		
+		groupLeft = new SpeedControllerGroup(driveFL, driveBL);
+		groupRight = new SpeedControllerGroup(driveFR, driveBR);
+		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
 		/**
@@ -79,10 +83,8 @@ public class ArcadeBot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
-    		myDrive.addSC(driveFL);
-    		myDrive.addSC(driveFR);
-    		myDrive.addSC(driveBL);
-    		myDrive.addSC(driveBR);
+    		myDrive.addSC(groupLeft);
+    		myDrive.addSC(groupRight);
     		myDrive.createDrive(2);
     
 	}
