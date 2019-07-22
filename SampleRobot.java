@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * project.
  */
 // If you rename or move this class, update the build.properties file in the project root
-public class Robot extends IterativeRobot {
+public class SampleRobot extends IterativeRobot {
 	
 	private static final String DEFAULT_AUTO = "Default";
 	private static final String CUSTOM_AUTO = "Sandstorm";
