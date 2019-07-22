@@ -28,6 +28,9 @@ public class SampleRobot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	// declare any objects needed here
+	private OneMotorElevator elev;
+	private TwoMotorConveyor intake;
+	private OneMotorConveyor lift;
 	
 	/**
 	 * declare your motors here
@@ -38,6 +41,7 @@ public class SampleRobot extends IterativeRobot {
 	 */
   	private Talon driveLeft, driveRight;
   	private NidecBrushless elevatorMotor;
+	private Spark intakeLeft, intakeRight, conveyorLift;
 	
 	// if you need any speed controller groups, declare them here
 	
@@ -69,8 +73,13 @@ public class SampleRobot extends IterativeRobot {
     		driveLeft = new Talon(SampleRobotMap.map.get("driveLeft"));
     		driveLeft = new Talon(SampleRobotMap.map.get("driveRight"));
 		elevatorMotor = new NidecBrushless(SampleRobotMap.map.get("elevatorMotor"));
+		conveyorLift = new Spark(SampleRobotMap.map.get("conveyorLift"));
+		intakeLeft = new Spark(SampleRobotMap.map.get("intakeLeft"));
+		intakeRight = new Spark(SampleRobotMap.map.get("intakeRight"));
 		
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
+		intake = new TwoMotorConveyor(intakeLeft, intakeRight, 1.0);
+		lift = new OneMotorConveyor(conveyorLift, "right", 0.35);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -121,18 +130,23 @@ public class SampleRobot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		// insert teleop code here
 		myDrive.getDrive().tankDrive(SampleOI.oi.get(0).getY(), SampleOI.oi.get(1).getY());
 		
 		// elevator up when 'A' is pressed
-		elevatorUp(SampleOI.oi.get(2).getAButtonPressed());
+		elev.elevatorUp(SampleOI.oi.get(2).getAButtonPressed());
 		
 		// elevator down when 'B' is pressed
-		elevatorDown(SampleOI.oi.get(2).getBButtonPressed());
+		elev.elevatorDown(SampleOI.oi.get(2).getBButtonPressed());
 		
 		// stop elevator when 'X' is pressed
 		if (SampleOI.oi.get(2).getXButtonPressed()) {
-			elevatorStop();
+			elev.elevatorStop();
 		}
+		
+		// the intake activates when the left bumper is held
+		intake.runConveyor(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		
+		// the lift and intake act in conjunction
+		lift.runConveyor(SampleOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
 	}
 }
