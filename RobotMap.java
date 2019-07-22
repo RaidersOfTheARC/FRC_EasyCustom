@@ -19,8 +19,8 @@ public class RobotMap {
   
   public void addDevice(String name, int id) { map.put(name, id); }
   
-  public void getTunerID(String key) { map.get(key); }
+  public void get(String key) { map.get(key); }
   
-  public void changeID(String key, int id) { map.replace(key, id); }
+  public void set(String key, int id) { map.replace(key, id); }
   
 }
