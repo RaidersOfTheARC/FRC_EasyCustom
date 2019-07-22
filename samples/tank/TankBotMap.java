@@ -2,7 +2,7 @@ package frc.robot.samples.tank;
 
 import frc.robot.*;
 
-public class SampleRobotMap {
+public class TankBotMap {
 	
 	public static RobotMap map = new RobotMap();
 	public static void createMap() {
