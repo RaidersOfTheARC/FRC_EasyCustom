@@ -20,8 +20,8 @@ public class ArcadeOI {
   public static void createOI() {
     // instantiate your HIDs here
     // i.e. leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
-    joystick = new Joystick(ArcadeRobotMap.map.get("joystick"));
-    gamepad = new XboxController(ArcadeRobotMap.map.get("gamepad"));
+    joystick = new Joystick(ArcadeBotMap.map.get("joystick"));
+    gamepad = new XboxController(ArcadeBotMap.map.get("gamepad"));
     
     // create your OI
     // i.e. oi = new OI(GenericHID[]{joystick, gamepad});
