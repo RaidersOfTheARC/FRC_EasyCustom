@@ -25,21 +25,29 @@ public class OneMotorElevator implements Elevator extends Subsystem {
 		power = speed;
 	}
   
-  	public void elevatorUp() {
-	  	if (motorLoc.toLowerCase().equals("left")) {
-			motor.set(power);
-		} else if (motorLoc.toLowerCase().equals("right")) {
-			motor.set(-power);
+  	public void elevatorUp(boolean act) {
+		if (act) {
+			if (motorLoc.toLowerCase().equals("left")) {
+				motor.set(power);
+			} else if (motorLoc.toLowerCase().equals("right")) {
+				motor.set(-power);
+			} else {
+				elevatorStop();
+			}
 		} else {
 			elevatorStop();
 		}
   	}
 	
-	public void elevatorDown() {
-		if (motorLoc.toLowerCase().equals("left")) {
-			motor.set(-power);
-		} else if (motorLoc.toLowerCase().equals("right")) {
-			motor.set(power);
+	public void elevatorDown(boolean act) {
+		if (act) {
+			if (motorLoc.toLowerCase().equals("left")) {
+				motor.set(-power);
+			} else if (motorLoc.toLowerCase().equals("right")) {
+				motor.set(power);
+			} else {
+				elevatorStop();
+			}
 		} else {
 			elevatorStop();
 		}
