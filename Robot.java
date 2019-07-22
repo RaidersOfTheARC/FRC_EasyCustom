@@ -28,6 +28,9 @@ public class Robot extends IterativeRobot {
 	
 	// declare any objects needed here, such as joysticks or controllers
 	
+	// this is your OI, where your HIDs will be stored
+	private OI myOI;
+	
 	/**
 	 * declare your motors here
 	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless
@@ -60,11 +63,14 @@ public class Robot extends IterativeRobot {
 		 * view RobotMap.java for details, methods, and constructors
 		 * view MyRobotMap.java to create your map
 		 */
-		
 		MyRobotMap.createMap();
-		
+				
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
+		
+		// create your OI here after you have instantiated your HIDs
+		// i.e. myOI = new OI(new GenericHID[]{joystick, gamepad});
+		myOI = new OI();
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
