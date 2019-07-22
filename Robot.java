@@ -7,8 +7,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.can.*;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.*;
+import frc.robot.subsystems.*;
 import java.util.concurrent.TimeUnit;
 
 /**
