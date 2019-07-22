@@ -20,6 +20,10 @@ public class OneMotorElevator implements Elevator extends Subsystem {
 		this.motor = motor;
 		power = speed;
   	}
+	
+	public void setPower(double speed) {
+		power = speed;
+	}
   
   	public void elevatorUp() {
 	  	if (motorLoc.toLowerCase().equals("left")) {
