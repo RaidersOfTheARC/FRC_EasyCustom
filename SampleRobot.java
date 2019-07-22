@@ -124,21 +124,8 @@ public class SampleRobot extends IterativeRobot {
 		myDrive.getDrive().tankDrive(MyOI.oi.get(0).getY(), MyOI.oi.get(1).getY());
 		
 		// elevator up when 'A' is pressed
-		if (MyOI.oi.get(2).getAButtonPressed()) {
-			elev.elevatorUp();
-			Timer.delay(5);
-			elev.elevatorStop();
-		}
+		elevatorUp(MyOI.oi.get(2).getAButtonPressed());
 		// elevator down when 'B' is pressed
-		else if (MyOI.oi.get(2).getBButtonPressed()) {
-			elev.elevatorDown();
-			Timer.delay(5);
-			elev.elevatorStop();
-		}
-		// to reiterate that the elevator should not move
-		else {
-			elev.elevatorStop();
-		}
-		
+		elevatorDown(MyOI.oi.get(2).getBButtonPressed());
 	}
 }
