@@ -9,12 +9,12 @@ public class ArcadeBotMap {
     
   		// add your devices here
 		// i.e. myMap.addDevice("driveFL", 10);
-    		map.addDevice("driveLeft", 5);
-		map.addDevice("driveRight", 6);
-		map.addDevice("leftStick", 0);
-		map.addDevice("rightStick", 1);
-		map.addDevice("toolOp", 2);
-	  
+    		map.addDevice("driveFL", 10);
+		map.addDevice("driveFR", 11);
+		map.addDevice("driveBL", 12);
+		map.addDevice("driveBR", 13);
+		map.addDevice("joystick", 0);
+	  	map.addDevice("gamepad", 1);
 
     	}
   
