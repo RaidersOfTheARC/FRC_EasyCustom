@@ -14,6 +14,6 @@ public abstract class AngledShooter implements AngledDevice, Shooter {
     this.servoStates = servoStates;
   }
   
-  public abstract void readServoState(int servo);
+  public abstract int readServoState(int servo);
   
 }
