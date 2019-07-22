@@ -65,8 +65,8 @@ public class Robot extends IterativeRobot {
 		// add your devices here
 		// i.e. myMap.addDevice("driveFL", 10);
 		
-		// instantiate your motors here
-		// i.e. driveFL = new Spark(myMap.getTunerID("driveFL"));
+		// instantiate your devices here
+		// i.e. driveFL = new Spark(myMap.get("driveFL"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
