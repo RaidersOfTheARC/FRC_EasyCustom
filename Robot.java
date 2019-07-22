@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class Robot extends IterativeRobot {
 	
 	private static final String DEFAULT_AUTO = "Default";
-	private static final String CUSTOM_AUTO = "Sandstorm";
+	private static final String CUSTOM_AUTO = "Custom";
 	private static final long AUTO_DURATION = 7000;
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
