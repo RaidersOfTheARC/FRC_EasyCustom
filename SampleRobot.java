@@ -65,15 +65,18 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto Choices", chooser);
 		
 		myMap = new RobotMap();
-		// add your speed controllers here
-		// i.e. myMap.addSpeedController("driveFL", 10);
-    myMap.addSpeedController("driveLeft", 5);
-    myMap.addSpeedController("driveRight", 6);
+		// add your devices here
+		// i.e. myMap.addDevice("driveFL", 10);
+    myMap.addDevice("driveLeft", 5);
+    myMap.addDevice("driveRight", 6);
+		myMap.addDevice("leftStick", 0);
+		myMap.addDevice("rightStick", 1);
+		myMap.addDevice("toolOp", 2);
 		
-		// instantiate your motors here
-		// i.e. driveFL = new Spark(myMap.getTunerID("driveFL"));
-    driveLeft = new Talon(myMap.getTunerID("driveLeft"));
-    driveLeft = new Talon(myMap.getTunerID("driveRight"));
+		// instantiate your devices here
+		// i.e. driveFL = new Spark(myMap.get("driveFL"));
+    driveLeft = new Talon(myMap.get("driveLeft"));
+    driveLeft = new Talon(myMap.get("driveRight"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -87,10 +90,6 @@ public class Robot extends IterativeRobot {
     myDrive.addSC(driveLeft);
     myDrive.addSC(driveRight);
     myDrive.createDrive(2);
-    
-    leftStick = new Joystick(0);
-    rightStick = new Joystick(1);
-    toolOp = new XboxController(2);
     
 	}
 	
