@@ -20,9 +20,9 @@ public class TankOI {
   public static void createOI() {
     // instantiate your HIDs here
     // i.e. leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
-    leftStick = new Joystick(SampleRobotMap.map.get("leftStick"));
-    rightStick = new Joystick(SampleRobotMap.map.get("rightStick"));
-    toolOp = new XboxController(SampleRobotMap.map.get("toolOp"));
+    leftStick = new Joystick(TankBotMap.map.get("leftStick"));
+    rightStick = new Joystick(TankBotMap.map.get("rightStick"));
+    toolOp = new XboxController(TankBotMap.map.get("toolOp"));
     
     // create your OI
     // i.e. oi = new OI(GenericHID[]{joystick, gamepad});
