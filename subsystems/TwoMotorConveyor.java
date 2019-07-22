@@ -5,9 +5,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
-import frc.robot.*;
+import edu.wpi.first.wpilibj.command.*;
 
-public class OneMotorConveyor implements Conveyor {
+public class OneMotorConveyor implements Conveyor extends Subsystem {
   
   private SpeedController left, right;
   private double power;
@@ -45,5 +45,11 @@ public class OneMotorConveyor implements Conveyor {
       right.setInverted(false);
     }
   }
+  
+  @Override
+  	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+	  	// setDefaultCommand(new MySpecialCommand());
+  	}
   
 }
