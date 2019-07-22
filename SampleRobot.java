@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
 		rightStick = new Joystick(MyRobotMap.map.get("rightStick"));
 		toolOp = new XboxController(MyRobotMap.map.get("toolOp"));
 		
-		elev = new OneMotorElevator(elevatorMotor, "left", 0);
+		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -126,7 +126,22 @@ public class Robot extends IterativeRobot {
 		// insert teleop code here
 		myDrive.tankDrive(leftStick.getY(), rightStick.getY());
 		
-		// elevator
+		// elevator up when 'A' is pressed
+		if (toolOp.getAButtonPressed()) {
+			elevatorUp();
+			Timer.delay(5);
+			elevatorStop();
+		}
+		// elevator down when 'B' is pressed
+		else if (toolOp.getBButtonPressed()) {
+			elevatorDown();
+			Timer.delay(5);
+			elevatorStop();
+		}
+		// to reiterate that the elevator should not move
+		else {
+			elevatorStop();
+		}
 		
 	}
 }
