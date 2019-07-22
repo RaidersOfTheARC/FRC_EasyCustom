@@ -65,8 +65,10 @@ public class ArcadeBot extends IterativeRobot {
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
-    driveLeft = new Talon(TankBotMap.map.get("driveLeft"));
-    driveLeft = new Talon(TankBotMap.map.get("driveRight"));
+    		driveFL = new Victor(ArcadeBotMap.map.get("driveFL"));
+    		driveFR = new Victor(ArcadeBotMap.map.get("driveFR"));
+		driveBL = new Victor(ArcadeBotMap.map.get("driveBL"));
+		driveBR = new Victor(ArcadeBotMap.map.get("driveBR"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -77,11 +79,11 @@ public class ArcadeBot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
-    myDrive.addSC(driveFL);
-    myDrive.addSC(driveFR);
-    myDrive.addSC(driveBL);
-    myDrive.addSC(driveBR);
-    myDrive.createDrive(2);
+    		myDrive.addSC(driveFL);
+    		myDrive.addSC(driveFR);
+    		myDrive.addSC(driveBL);
+    		myDrive.addSC(driveBR);
+    		myDrive.createDrive(2);
     
 	}
 	
@@ -119,6 +121,6 @@ public class ArcadeBot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		myDrive.getDrive().tankDrive(ArcadeOI.oi.get(0).getY(), ArcadeOI.oi.get(0).getX());
+		myDrive.getDrive().arcadeDrive(ArcadeOI.oi.get(0).getY(), ArcadeOI.oi.get(0).getX());
 	}
 }
