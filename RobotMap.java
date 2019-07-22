@@ -17,7 +17,7 @@ public class RobotMap {
     map = new HashMap<String, Integer>();
   }
   
-  public void addSpeedController(String name, int id) { map.put(name, id); }
+  public void addDevice(String name, int id) { map.put(name, id); }
   
   public void getTunerID(String key) { map.get(key); }
   
