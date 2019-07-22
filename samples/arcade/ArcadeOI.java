@@ -2,7 +2,7 @@
  * You will create your custom OI here
  */
 
-package frc.robot.samples.tank;
+package frc.robot.samples.arcade;
 
 import edu.wpi.first.wpilibj.*;
 import frc.robot.*;
