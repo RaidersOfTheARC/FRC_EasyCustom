@@ -26,10 +26,7 @@ public class Robot extends IterativeRobot {
 	private static final long AUTO_DURATION = 7000;
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
-	// declare any objects needed here, such as joysticks or controllers
-	
-	// this is your OI, where your HIDs will be stored
-	private OI myOI;
+	// declare any objects needed here
 	
 	/**
 	 * declare your motors here
@@ -64,13 +61,13 @@ public class Robot extends IterativeRobot {
 		 * view MyRobotMap.java to create your map
 		 */
 		MyRobotMap.createMap();
+		
+		// this is your OI, where your HIDs will be stored
+		// create your OI in MyOI.java
+		MyOI.createMap();
 				
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
-		
-		// create your OI here after you have instantiated your HIDs
-		// i.e. myOI = new OI(new GenericHID[]{joystick, gamepad});
-		myOI = new OI();
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
