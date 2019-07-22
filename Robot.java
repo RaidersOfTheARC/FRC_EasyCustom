@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	
 	/**
 	 * declare your motors here
-	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless, Servo
+	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless
 	 * CTRE: WPI_VictorSPX, TalonSRX
 	 *
 	 * i.e. private Spark driveFL;
