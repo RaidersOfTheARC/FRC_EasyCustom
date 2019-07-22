@@ -32,7 +32,6 @@ public class Robot extends IterativeRobot {
 	 * this is your robot map
 	 * view RobotMap.java for details, methods, and constructors
 	 */
-	private RobotMap myMap;
 	
 	/**
 	 * declare your motors here
@@ -61,12 +60,8 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		myMap = new RobotMap();
-		// add your devices here
-		// i.e. myMap.addDevice("driveFL", 10);
-		
 		// instantiate your devices here
-		// i.e. driveFL = new Spark(myMap.get("driveFL"));
+		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
