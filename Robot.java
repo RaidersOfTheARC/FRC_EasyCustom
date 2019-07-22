@@ -62,8 +62,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto Choices", chooser);
 		
 		myMap = new RobotMap();
-		// add your speed controllers here
-		// i.e. myMap.addSpeedController("driveFL", 10);
+		// add your devices here
+		// i.e. myMap.addDevice("driveFL", 10);
 		
 		// instantiate your motors here
 		// i.e. driveFL = new Spark(myMap.getTunerID("driveFL"));
