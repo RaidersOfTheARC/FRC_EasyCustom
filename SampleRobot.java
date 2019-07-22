@@ -26,10 +26,7 @@ public class SampleRobot extends IterativeRobot {
 	private static final long AUTO_DURATION = 7000;
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
-	// declare any objects needed here, such as joysticks or controllers
-  	private Joystick leftStick, rightStick;
-  	private XboxController toolOp;
-	private OneMotorElevator elev;
+	// declare any objects needed here
 	
 	/**
 	 * declare your motors here
@@ -63,14 +60,14 @@ public class SampleRobot extends IterativeRobot {
 		// create the robot map
 		MyRobotMap.createMap();
 		
+		// create the OI
+		MyOI.createOI();
+		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
     		driveLeft = new Talon(MyRobotMap.map.get("driveLeft"));
     		driveLeft = new Talon(MyRobotMap.map.get("driveRight"));
 		elevatorMotor = new NidecBrushless(MyRobotMap.map.get("elevatorMotor"));
-		leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
-		rightStick = new Joystick(MyRobotMap.map.get("rightStick"));
-		toolOp = new XboxController(MyRobotMap.map.get("toolOp"));
 		
 		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
 		
@@ -124,16 +121,16 @@ public class SampleRobot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// insert teleop code here
-		myDrive.getDrive().tankDrive(leftStick.getY(), rightStick.getY());
+		myDrive.getDrive().tankDrive(MyOI.oi.get(0).getY(), MyOI.oi.get(1).getY());
 		
 		// elevator up when 'A' is pressed
-		if (toolOp.getAButtonPressed()) {
+		if (MyOI.oi.get(2).getAButtonPressed()) {
 			elev.elevatorUp();
 			Timer.delay(5);
 			elev.elevatorStop();
 		}
 		// elevator down when 'B' is pressed
-		else if (toolOp.getBButtonPressed()) {
+		else if (MyOI.oi.get(2).getBButtonPressed()) {
 			elev.elevatorDown();
 			Timer.delay(5);
 			elev.elevatorStop();
