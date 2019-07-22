@@ -4,10 +4,8 @@
  */
  
 package frc.robot.subsystems;
-
-import edu.wpi.first.wpilibj.command.*;
  
-public interface Conveyor extends Subsystem {
+public interface Conveyor {
 
   // activate the conveyor
   public void runConveyor(boolean act);
