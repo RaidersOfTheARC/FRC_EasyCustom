@@ -22,14 +22,22 @@ public class TwoMotorElevator implements Elevator extends Subsystem {
 		power = speed;
 	}
   
-  	public void elevatorUp() {
-	  	motorLeft.set(power);
-      		motorRight.set(-power);
+  	public void elevatorUp(boolean act) {
+		if (act) {
+			motorLeft.set(power);
+			motorRight.set(-power);
+		} else {
+			elevatorStop();
+		}
   	}
 	
-    	public void elevatorDown() {
-      		motorLeft.set(-power);
-      		motorRight.set(power);
+    	public void elevatorDown(boolean act) {
+		if (act) {
+			motorLeft.set(-power);
+			motorRight.set(power);
+		} else {
+			elevatorStop();
+		}
     	}
 
 	public void elevatorStop() {
