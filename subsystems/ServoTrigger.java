@@ -15,7 +15,7 @@ public class ServoTrigger implements PushTrigger extends Subsystem {
   
   // positions and defaults are values in [0, 1]
   // default = default servo position
-  public OneMotorConveyor(Servo[] triggers, double[] defaults, double[] positions) {
+  public ServoTrigger(Servo[] triggers, double[] defaults, double[] positions) {
     servos = triggers;
     this.positions = positions;
     this.defaults = defaults;
