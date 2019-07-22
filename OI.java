@@ -11,6 +11,10 @@ public class OI {
   
   private GenericHID[] controls;
   
+  public OI() {
+    // default constructor, leave empty
+  }
+  
   // user inputs a custom array of controllers
   // i.e. OI my_OI = new OI(new GenericHID[]{joystick, gamepad});
   public OI(GenericHID[] ctrls) {
