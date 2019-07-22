@@ -128,19 +128,19 @@ public class Robot extends IterativeRobot {
 		
 		// elevator up when 'A' is pressed
 		if (toolOp.getAButtonPressed()) {
-			elevatorUp();
+			elev.elevatorUp();
 			Timer.delay(5);
-			elevatorStop();
+			elev.elevatorStop();
 		}
 		// elevator down when 'B' is pressed
 		else if (toolOp.getBButtonPressed()) {
-			elevatorDown();
+			elev.elevatorDown();
 			Timer.delay(5);
-			elevatorStop();
+			elev.elevatorStop();
 		}
 		// to reiterate that the elevator should not move
 		else {
-			elevatorStop();
+			elev.elevatorStop();
 		}
 		
 	}
