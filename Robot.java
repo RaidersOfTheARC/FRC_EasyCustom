@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* THIS IS CODE IS FOR THE WEAK-MINDED                                        */
+/* THIS CODE IS FOR AN FRC ROBOT                                              */
 /* There are a wide variety of subsystems and customizable options            */
 /*----------------------------------------------------------------------------*/
 
