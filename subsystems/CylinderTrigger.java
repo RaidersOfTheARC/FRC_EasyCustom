@@ -25,7 +25,7 @@ public class CylinderTrigger implements PushTrigger extends Subsystem {
     }
   }
   
-  public void stopConveyor() {
+  public void retract() {
 	  for (Solenoid sol : cylinders) {
 		  sol.set(false);
 	  }
