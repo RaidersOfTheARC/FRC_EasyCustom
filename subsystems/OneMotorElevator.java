@@ -27,7 +27,7 @@ public class OneMotorElevator implements Elevator extends Subsystem {
 		} else if (motorLoc.toLowerCase().equals("right")) {
 			motor.set(-power);
 		} else {
-			motor.set(0);
+			elevatorStop();
 		}
   	}
 	
@@ -37,7 +37,7 @@ public class OneMotorElevator implements Elevator extends Subsystem {
 		} else if (motorLoc.toLowerCase().equals("right")) {
 			motor.set(power);
 		} else {
-			motor.set(0);
+			elevatorStop();
 		}
 	}
 	
