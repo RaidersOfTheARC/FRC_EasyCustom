@@ -18,7 +18,7 @@
  * - Eject elements using outtake pistons
  */
 
-package frc.robot.samples;
+package frc.robot.samples.tank;
 
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.can.*;
