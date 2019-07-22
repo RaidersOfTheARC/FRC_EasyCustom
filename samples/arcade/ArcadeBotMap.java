@@ -21,6 +21,7 @@ public class ArcadeBotMap {
 		map.addDevice("outtakeLeft", 7);
 		map.addDevice("outtakeRight", 8);
 		map.addDevice("hook", 1);
+		map.addDevice("cpress", 1);
 
     	}
   
