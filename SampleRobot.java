@@ -124,7 +124,7 @@ public class SampleRobot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		// insert teleop code here
-		myDrive.tankDrive(leftStick.getY(), rightStick.getY());
+		myDrive.getDrive().tankDrive(leftStick.getY(), rightStick.getY());
 		
 		// elevator up when 'A' is pressed
 		if (toolOp.getAButtonPressed()) {
