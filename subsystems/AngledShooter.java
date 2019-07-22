@@ -1,8 +1,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.*;
 
-public abstract class AngledShooter implements AngledDevice, Shooter {
+public abstract class AngledShooter extends Subsystem implements AngledDevice, Shooter {
   
   public Servo[] angleManips;
   public SpeedController[] shooters;
@@ -15,5 +16,11 @@ public abstract class AngledShooter implements AngledDevice, Shooter {
   }
   
   public abstract int readServoState(int servo);
+  
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+  }
   
 }
