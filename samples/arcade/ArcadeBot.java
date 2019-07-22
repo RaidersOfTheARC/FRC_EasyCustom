@@ -28,6 +28,13 @@ public class ArcadeBot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	// declare any objects needed here
+	private TwoMotorConveyor lift, outtake;
+	private ServoTrigger intake;
+	private CylinderTrigger climb;
+	
+	private Compressor cpress;
+	private Solenoid hook;
+	private Servo gate;
 	
 	/**
 	 * declare your motors here
@@ -37,6 +44,7 @@ public class ArcadeBot extends IterativeRobot {
 	 * i.e. private Spark driveFL;
 	 */
   	private Victor driveFL, driveFR, driveBL, driveBR;
+	private Spark liftLeft, liftRight, outtakeLeft, outtakeRight;
 	
 	// if you need any speed controller groups, declare them here
 	private SpeedControllerGroup groupLeft, groupRight;
@@ -70,9 +78,25 @@ public class ArcadeBot extends IterativeRobot {
     		driveFR = new Victor(ArcadeBotMap.map.get("driveFR"));
 		driveBL = new Victor(ArcadeBotMap.map.get("driveBL"));
 		driveBR = new Victor(ArcadeBotMap.map.get("driveBR"));
+		outtakeLeft = new Spark(ArcadeBotMap.map.get("outtakeLeft"));
+		outtakeRight = new Spark(ArcadeBotMap.map.get("outtakeRight"));
+		liftLeft = new Spark(ArcadeBotMap.map.get("liftLeft"));
+		liftRight = new Spark(ArcadeBotMap.map.get("liftRight"));
+		hook = new Solenoid(ArcadeBotMap.map.get("hook"));
+		gate = new Servo(ArcadeBotMap.map.get("gate"));
+		
+		outtake = new TwoMotorConveyor(outtakeLeft, outtakeRight, 0.75);
+		lift = new TwoMotorConveyor(liftLeft, liftRight, 0.4);
+		climb = new CylinderTrigger(new Solenoid[]{hook});
+		
+		intake = new ServoTrigger(new Servo[]{gate},
+					  new double[]{0}, new double[]{0.67});
 		
 		groupLeft = new SpeedControllerGroup(driveFL, driveBL);
 		groupRight = new SpeedControllerGroup(driveFR, driveBR);
+		
+		cpress = new Compressor(ArcadeBotMap.map.get("cpress"));
+		cpress.setClosedLoopControl(true);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -124,5 +148,32 @@ public class ArcadeBot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		myDrive.getDrive().arcadeDrive(ArcadeOI.oi.get(0).getY(), ArcadeOI.oi.get(0).getX());
+		
+		// gate opens when 'A' is held
+		intake.push(ArcadeOI.oi.get(1).getAButton());
+		
+		// gate closes when 'A' is released
+		if (ArcadeOI.oi.get(1).getAButtonReleased()) {
+			intake.retract();
+		}
+		
+		// the lift activates when the left bumper is held
+		lift.runConveyor(ArcadeOI.oi.get(1).getBumper(GenericHID.Hand.kLeft));
+		
+		// the lift inverts when 'X' is pressed
+		if (ArcadeOI.oi.get(1).getXButtonPressed()) {
+			lift.invertConveyor();
+		}
+		
+		// the outtake activates when the right bumper is held
+		outtake.runConveyor(ArcadeOI.oi.get(1).getBumper(GenericHID.Hand.kRight));
+		
+		// the climbing hook activates when 'Y' is held
+		climb.push(ArcadeOI.oi.get(1).getYButton);
+		
+		// the climbing hook retracts when 'Y' is released
+		if (ArcadeOI.oi.get(1).getYButtonReleased()) {
+			climb.retract();
+		}
 	}
 }
