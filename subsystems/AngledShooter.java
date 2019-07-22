@@ -6,10 +6,14 @@ public abstract class AngledShooter implements AngledDevice, Shooter {
   
   public Servo[] angleManips;
   public SpeedController[] shooters;
+  public int[] servoStates;
 
-  public AngledShooter(Servo[] anglers, SpeedController[] shooters) {
+  public AngledShooter(Servo[] anglers, SpeedController[] shooters, int[] servoStates) {
     angleManips = anglers;
     this.shooters = shooters;
+    this.servoStates = servoStates;
   }
+  
+  public abstract void readServoStates();
   
 }
