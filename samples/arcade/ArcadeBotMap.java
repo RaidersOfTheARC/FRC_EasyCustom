@@ -15,6 +15,10 @@ public class ArcadeBotMap {
 		map.addDevice("driveBR", 13);
 		map.addDevice("joystick", 0);
 	  	map.addDevice("gamepad", 1);
+		map.addDevice("gate", 7);
+		map.addDevice("liftLeft", 5);
+		map.addDevice("liftRight", 6);
+		map.addDevice("hook", 1);
 
     	}
   
