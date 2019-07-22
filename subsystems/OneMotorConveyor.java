@@ -43,4 +43,10 @@ public class OneMotorConveyor implements Conveyor {
     else motor.setInverted(false);
   }
   
+  @Override
+  	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+	  	// setDefaultCommand(new MySpecialCommand());
+  	}
+  
 }
