@@ -76,7 +76,7 @@ public class SampleRobot extends IterativeRobot {
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
     		driveLeft = new Talon(SampleRobotMap.map.get("driveLeft"));
     		driveLeft = new Talon(SampleRobotMap.map.get("driveRight"));
-		elevatorMotor = new NidecBrushless(SampleRobotMap.map.get("elevatorMotor"), 0);
+		elevatorMotor = new NidecBrushless(SampleRobotMap.map.get("elevatorPWM"), SampleRobotMap.map.get("elevatorDIO"));
 		conveyorLift = new Spark(SampleRobotMap.map.get("conveyorLift"));
 		intakeLeft = new Spark(SampleRobotMap.map.get("intakeLeft"));
 		intakeRight = new Spark(SampleRobotMap.map.get("intakeRight"));
