@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
 	// declare any objects needed here, such as joysticks or controllers
   	private Joystick leftStick, rightStick;
   	private XboxController toolOp;
+	private OneMotorElevator elev;
 	
 	/**
 	 * declare your motors here
@@ -70,6 +71,8 @@ public class Robot extends IterativeRobot {
 		leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
 		rightStick = new Joystick(MyRobotMap.map.get("rightStick"));
 		toolOp = new XboxController(MyRobotMap.map.get("toolOp"));
+		
+		elev = new OneMotorElevator(elevatorMotor, "left", 0);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -123,6 +126,7 @@ public class Robot extends IterativeRobot {
 		// insert teleop code here
 		myDrive.tankDrive(leftStick.getY(), rightStick.getY());
 		
-		if (
+		// elevator
+		
 	}
 }
