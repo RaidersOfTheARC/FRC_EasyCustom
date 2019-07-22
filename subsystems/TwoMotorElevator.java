@@ -17,6 +17,10 @@ public class TwoMotorElevator implements Elevator extends Subsystem {
       		rightMotor = motorRight;
       		power = speed;
   	}
+	
+	public void setPower(double speed) {
+		power = speed;
+	}
   
   	public void elevatorUp() {
 	  	motorLeft.set(power);
