@@ -11,7 +11,7 @@ public class CylinderTrigger implements PushTrigger extends Subsystem {
   
   private Solenoid[] cylinders;
   
-  public OneMotorConveyor(Solenoid[] triggers) {
+  public CylinderTrigger(Solenoid[] triggers) {
     cylinders = triggers;
   }
     
