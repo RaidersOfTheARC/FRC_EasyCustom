@@ -125,7 +125,13 @@ public class SampleRobot extends IterativeRobot {
 		
 		// elevator up when 'A' is pressed
 		elevatorUp(MyOI.oi.get(2).getAButtonPressed());
+		
 		// elevator down when 'B' is pressed
 		elevatorDown(MyOI.oi.get(2).getBButtonPressed());
+		
+		// stop elevator when 'X' is pressed
+		if (MyOI.oi.get(2).getXButtonPressed()) {
+			elevatorStop();
+		}
 	}
 }
