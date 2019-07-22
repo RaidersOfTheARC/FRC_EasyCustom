@@ -18,6 +18,8 @@ public class ArcadeBotMap {
 		map.addDevice("gate", 7);
 		map.addDevice("liftLeft", 5);
 		map.addDevice("liftRight", 6);
+		map.addDevice("outtakeLeft", 7);
+		map.addDevice("outtakeRight", 8);
 		map.addDevice("hook", 1);
 
     	}
