@@ -30,12 +30,6 @@ public class Robot extends IterativeRobot {
   private XboxController toolOp;
 	
 	/**
-	 * this is your robot map
-	 * view RobotMap.java for details, methods, and constructors
-	 */
-	private RobotMap myMap;
-	
-	/**
 	 * declare your motors here
 	 * WPI: DMC60, Jaguar, PWMTalonSRX, PWMVictorSPX, SD540, Spark, Talon, Victor, VictorSP, NidecBrushless
 	 * CTRE: WPI_VictorSPX, TalonSRX
@@ -64,22 +58,15 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		myMap = new RobotMap();
-		// add your devices here
-		// i.e. myMap.addDevice("driveFL", 10);
-    myMap.addDevice("driveLeft", 5);
-    myMap.addDevice("driveRight", 6);
-		myMap.addDevice("leftStick", 0);
-		myMap.addDevice("rightStick", 1);
-		myMap.addDevice("toolOp", 2);
+		MyRobotMap.createMap();
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(myMap.get("driveFL"));
-    driveLeft = new Talon(myMap.get("driveLeft"));
-    driveLeft = new Talon(myMap.get("driveRight"));
-		leftStick = new Joystick(myMap.get("leftStick"));
-		rightStick = new Joystick(myMap.get("rightStick"));
-		toolOp = new XboxController(myMap.get("toolOp"));
+    driveLeft = new Talon(MyRobotMap.map.get("driveLeft"));
+    driveLeft = new Talon(MyRobotMap.map.get("driveRight"));
+		leftStick = new Joystick(MyRobotMap.map.get("leftStick"));
+		rightStick = new Joystick(MyRobotMap.map.get("rightStick"));
+		toolOp = new XboxController(MyRobotMap.map.get("toolOp"));
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
