@@ -40,7 +40,11 @@ public class RotatingTurret extends Subsystem implements Shooter, RotatingBase {
   }
   
   public void spin(boolean act) {
-    baseMotor.set(basePower);
+    if (act) {
+      baseMotor.set(basePower);
+    } else {
+      baseMotor.set(0);
+    }
   }
   
   public void invert() {
