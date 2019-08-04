@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.qpi.first.wpilibj.*;
 
-public class OneMotorElevator implements Elevator extends Subsystem {
+public class OneMotorElevator extends Subsystem implements Elevator {
 	
 	private String motorLoc;
 	private SpeedController motor;
