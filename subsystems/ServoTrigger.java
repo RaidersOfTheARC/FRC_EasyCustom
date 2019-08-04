@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 
-public class ServoTrigger implements PushTrigger extends Subsystem {
+public class ServoTrigger extends Subsystem implements PushTrigger {
   
   private Servo[] servos;
   private double[] positions;
