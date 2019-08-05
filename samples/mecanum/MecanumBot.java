@@ -30,7 +30,7 @@ public class MecanumBot extends IterativeRobot {
 	
 	// declare any objects needed here
 	private OneMotorElevator elev;
-	private TwoMotorConveyor intake, channel;
+	private TwoMotorConveyor intake, channel, outtake;
 	private CylinderTrigger hatch;
 	
 	private Compressor cpress;
@@ -72,7 +72,7 @@ public class MecanumBot extends IterativeRobot {
 		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
-    
+		
 		
 		cpress = new Compressor(ArcadeBotMap.map.get("cpress"));
 		cpress.setClosedLoopControl(true);
@@ -86,7 +86,7 @@ public class MecanumBot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
-     myDrive.createDrive(1);
+     		myDrive.createDrive(1);
     
 	}
 	
@@ -124,33 +124,6 @@ public class MecanumBot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		myDrive.getDrive().arcadeDrive(ArcadeOI.oi.get(0).getY(), ArcadeOI.oi.get(0).getX());
 		
-		// gate opens when 'A' is held
-		intake.push(ArcadeOI.oi.get(1).getAButton());
-		
-		// gate closes when 'A' is released
-		if (ArcadeOI.oi.get(1).getAButtonReleased()) {
-			intake.retract();
-		}
-		
-		// the lift activates when the left bumper is held
-		lift.runConveyor(ArcadeOI.oi.get(1).getBumper(GenericHID.Hand.kLeft));
-		
-		// the lift inverts when 'X' is pressed
-		if (ArcadeOI.oi.get(1).getXButtonPressed()) {
-			lift.invertConveyor();
-		}
-		
-		// the outtake activates when the right bumper is held
-		outtake.runConveyor(ArcadeOI.oi.get(1).getBumper(GenericHID.Hand.kRight));
-		
-		// the climbing hook activates when 'Y' is held
-		climb.push(ArcadeOI.oi.get(1).getYButton);
-		
-		// the climbing hook retracts when 'Y' is released
-		if (ArcadeOI.oi.get(1).getYButtonReleased()) {
-			climb.retract();
-		}
 	}
 }
