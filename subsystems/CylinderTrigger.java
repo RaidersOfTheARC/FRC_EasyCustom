@@ -7,7 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.*;
 
-public class CylinderTrigger implements PushTrigger extends Subsystem {
+public class CylinderTrigger extends Subsystem implements PushTrigger {
   
   private Solenoid[] cylinders;
   
