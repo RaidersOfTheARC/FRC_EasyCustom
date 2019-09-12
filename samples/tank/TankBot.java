@@ -1,14 +1,31 @@
 /*----------------------------------------------------------------------------*/
-/* THIS CODE IS FOR AN FRC ROBOT                                              */
-/* There are a wide variety of subsystems and customizable options            */
+/* This sample robot is a tank drive                                          */
+/* By: Jackson Isenberg                                                       */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+/**
+ * Subsytems used:
+ * - One Motor Elevator
+ * - Two Motor Conveyor
+ * - One Motor Conveyor
+ * - Cylinder Trigger
+ */
+
+/**
+ * Robot functions:
+ * - Pick up field elements using intake
+ * - Cycle elements through internal lift mechanism
+ * - Set elevator height so that elements land in holding mechanism at specified height
+ * - Eject elements using outtake pistons
+ */
+
+package frc.robot.samples.tank;
 
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.subsystems.*;
+import frc.robot.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -19,14 +36,21 @@ import java.util.concurrent.TimeUnit;
  * project.
  */
 // If you rename or move this class, update the build.properties file in the project root
-public class Robot extends IterativeRobot {
+public class TankBot extends IterativeRobot {
 	
 	private static final String DEFAULT_AUTO = "Default";
-	private static final String CUSTOM_AUTO = "Custom";
+	private static final String CUSTOM_AUTO = "Sandstorm";
 	private static final long AUTO_DURATION = 7000;
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	// declare any objects needed here
+	private OneMotorElevator elev;
+	private TwoMotorConveyor intake;
+	private OneMotorConveyor lift;
+	private CylinderTrigger outtake;
+	
+	private Compressor cpress;
+	private Solenoid outtakeLeft, outtakeRight;
 	
 	/**
 	 * declare your motors here
@@ -35,6 +59,9 @@ public class Robot extends IterativeRobot {
 	 *
 	 * i.e. private Spark driveFL;
 	 */
+  	private Talon driveLeft, driveRight;
+  	private NidecBrushless elevatorMotor;
+	private Spark intakeLeft, intakeRight, conveyorLift;
 	
 	// if you need any speed controller groups, declare them here
 	
@@ -55,19 +82,30 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		/**
-	 	 * this is your robot map
-		 * view RobotMap.java for details, methods, and constructors
-		 * view MyRobotMap.java to create your map
-		 */
-		MyRobotMap.createMap();
+		// create the robot map
+		TankBotMap.createMap();
 		
-		// this is your OI, where your HIDs will be stored
-		// create your OI in MyOI.java
-		MyOI.createMap();
-				
+		// create the OI
+		TankOI.createOI();
+		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
+    		driveLeft = new Talon(TankBotMap.map.get("driveLeft"));
+    		driveLeft = new Talon(TankBotMap.map.get("driveRight"));
+		elevatorMotor = new NidecBrushless(TankBotMap.map.get("elevatorPWM"), TankBotMap.map.get("elevatorDIO"));
+		conveyorLift = new Spark(TankBotMap.map.get("conveyorLift"));
+		intakeLeft = new Spark(TankBotMap.map.get("intakeLeft"));
+		intakeRight = new Spark(TankBotMap.map.get("intakeRight"));
+		outtakeLeft = new Solenoid(TankBotMap.map.get("outtakeLeft"));
+		outtakeRight = new Solenoid(TankBotMap.map.get("outtakeRight"));
+		
+		elev = new OneMotorElevator(elevatorMotor, "left", 0.5);
+		intake = new TwoMotorConveyor(intakeLeft, intakeRight, 1.0);
+		lift = new OneMotorConveyor(conveyorLift, "right", 0.35);
+		outtake = new CylinderTrigger(new Solenoid[]{outtakeLeft, outtakeRight});
+		
+		cpress = new Compressor(TankBotMap.map.get("cpress"));
+		cpress.setClosedLoopControl(true);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -78,6 +116,10 @@ public class Robot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
+    		myDrive.addSC(driveLeft);
+    		myDrive.addSC(driveRight);
+    		myDrive.createDrive(2);
+    
 	}
 	
 	/**
@@ -114,6 +156,27 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		// insert teleop code here
+		myDrive.getDrive().tankDrive(TankOI.oi.get(0).getY(), TankOI.oi.get(1).getY());
+		
+		// elevator up when 'A' is pressed
+		elev.elevatorUp(TankOI.oi.get(2).getAButtonPressed());
+		
+		// elevator down when 'B' is pressed
+		elev.elevatorDown(TankOI.oi.get(2).getBButtonPressed());
+		
+		// stop elevator when 'X' is pressed
+		if (TankOI.oi.get(2).getXButtonPressed()) {
+			elev.elevatorStop();
+		}
+		
+		// the intake activates when the left bumper is held
+		intake.runConveyor(TankOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		
+		// the lift and intake act in conjunction
+		lift.runConveyor(TankOI.oi.get(2).getBumper(GenericHID.Hand.kLeft));
+		
+		// the outtake activates when the right bumper is held
+		outtake.push(TankOI.oi.get(2).getBumper(GenericHID.Hand.kRight));
+		// the outtake retracts when the right bumper is released
 	}
 }

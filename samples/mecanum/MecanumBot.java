@@ -1,14 +1,16 @@
+
 /*----------------------------------------------------------------------------*/
-/* THIS CODE IS FOR AN FRC ROBOT                                              */
-/* There are a wide variety of subsystems and customizable options            */
+/* This sample robot is a mecanum drive                                       */
+/* By: Jackson Isenberg                                                       */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.samples.mecanum;
 
 import edu.wpi.first.wpilibj.*;
 import com.ctre.phoenix.motorcontrol.can.*;
 import edu.wpi.first.wpilibj.smartdashboard.*;
 import frc.robot.subsystems.*;
+import frc.robot.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -19,7 +21,7 @@ import java.util.concurrent.TimeUnit;
  * project.
  */
 // If you rename or move this class, update the build.properties file in the project root
-public class Robot extends IterativeRobot {
+public class MecanumBot extends IterativeRobot {
 	
 	private static final String DEFAULT_AUTO = "Default";
 	private static final String CUSTOM_AUTO = "Custom";
@@ -27,6 +29,12 @@ public class Robot extends IterativeRobot {
 	private SendableChooser<String> chooser = new SendableChooser<>();
 	
 	// declare any objects needed here
+	private OneMotorElevator elev;
+	private TwoMotorConveyor intake, channel, outtake;
+	private CylinderTrigger hatch;
+	
+	private Compressor cpress;
+	private Solenoid solIn, solOut;
 	
 	/**
 	 * declare your motors here
@@ -35,7 +43,8 @@ public class Robot extends IterativeRobot {
 	 *
 	 * i.e. private Spark driveFL;
 	 */
-	
+  
+  
 	// if you need any speed controller groups, declare them here
 	
 	/**
@@ -55,19 +64,18 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Run Auto", CUSTOM_AUTO);
 		SmartDashboard.putData("Auto Choices", chooser);
 		
-		/**
-	 	 * this is your robot map
-		 * view RobotMap.java for details, methods, and constructors
-		 * view MyRobotMap.java to create your map
-		 */
-		MyRobotMap.createMap();
+		// create the robot map
+		MecanumBotMap.createMap();
 		
-		// this is your OI, where your HIDs will be stored
-		// create your OI in MyOI.java
-		MyOI.createMap();
-				
+		// create the OI
+		MecanumOI.createOI();
+		
 		// instantiate your devices here
 		// i.e. driveFL = new Spark(MyRobotMap.map.get("driveFL"));
+		
+		
+		cpress = new Compressor(ArcadeBotMap.map.get("cpress"));
+		cpress.setClosedLoopControl(true);
 		
 		myDrive = new DriveTrain();
 		// customize your drivetrain here
@@ -78,6 +86,8 @@ public class Robot extends IterativeRobot {
 		 * myDrive.addSC(right);
 		 * myDrive.createDrive(2);
 		 */
+     		myDrive.createDrive(1);
+    
 	}
 	
 	/**
@@ -114,6 +124,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		// insert teleop code here
+		
 	}
 }
